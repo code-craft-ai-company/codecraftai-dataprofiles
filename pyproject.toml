@@ -20,6 +20,8 @@ python = ">=3.10,<4.0"
 automojo-errors = { git = "git@github.com:automationmojo/automojo-errors.git", branch = "main" }
 automojo-interfaces = { git = "git@github.com:automationmojo/automojo-interfaces.git", branch = "main" }
 automojo-foundation = { git = "git@github.com:automationmojo/automojo-foundation.git", branch = "main" }
+automojo-testbase = { git = "git@github.com:automationmojo/automojo-testbase.git", branch = "main" }
+
 
 [tool.poetry.group.dev.dependencies]
 

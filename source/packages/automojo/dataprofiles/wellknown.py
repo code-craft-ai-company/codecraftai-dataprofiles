@@ -31,18 +31,29 @@ def DataProfileManagerSingleton() -> DataProfileManager:
         try:
 
             if DATAPROFILE_MANAGER_SINGLETON is None:
-                dataprofiles = {}
-                if CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP is not None and \
-                    len(CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP) > 0:
-                    lscape: MergeMap = CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP
-                    if "dataprofiles" in lscape:
-                        dataprofiles = lscape["dataprofiles"]
-
                 ctx = ContextSingleton()
-                landscape_uris = ctx.lookup(ContextPaths.CONFIG_LANDSCAPE_URIS, [])
+
+                dataprofiles = None
+                config_uris = None
+
+                if CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP is not None and \
+                   len(CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP) > 0:
+                    configmap: MergeMap = CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP
+                    if "dataprofiles" in configmap:
+                        dataprofiles = configmap["dataprofiles"]
+
+                    config_uris = ctx.lookup(ContextPaths.CONFIG_DATAPROFILE_URIS, [])
+
+                elif CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP is not None and \
+                    len(CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP) > 0:
+                    configmap: MergeMap = CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP
+                    if "dataprofiles" in configmap:
+                        dataprofiles = configmap["dataprofiles"]
+
+                    config_uris = ctx.lookup(ContextPaths.CONFIG_LANDSCAPE_URIS, [])
 
                 profilemgr = DataProfileManager()
-                profilemgr.load_datasource_profiles(dataprofiles, source_uris=landscape_uris)
+                profilemgr.load_datasource_profiles(dataprofiles, source_uris=config_uris)
                 DATAPROFILE_MANAGER_SINGLETON = profilemgr
                 
         finally:
