@@ -33,14 +33,14 @@ def DataProfileManagerSingleton() -> DataProfileManager:
             if DATAPROFILE_MANAGER_SINGLETON is None:
                 ctx = ContextSingleton()
 
-                dataprofiles = None
+                dataprofiles_config = None
                 config_uris = None
 
                 if CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP is not None and \
                    len(CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP) > 0:
                     configmap: MergeMap = CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP
                     if "dataprofiles" in configmap:
-                        dataprofiles = configmap["dataprofiles"]
+                        dataprofiles_config = configmap
 
                     config_uris = ctx.lookup(ContextPaths.CONFIG_DATAPROFILE_URIS, [])
 
@@ -48,12 +48,12 @@ def DataProfileManagerSingleton() -> DataProfileManager:
                     len(CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP) > 0:
                     configmap: MergeMap = CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP
                     if "dataprofiles" in configmap:
-                        dataprofiles = configmap["dataprofiles"]
+                        dataprofiles_config = configmap
 
                     config_uris = ctx.lookup(ContextPaths.CONFIG_LANDSCAPE_URIS, [])
 
                 profilemgr = DataProfileManager()
-                profilemgr.load_datasource_profiles(dataprofiles, source_uris=config_uris)
+                profilemgr.load_datasource_profiles(dataprofiles_config, source_uris=config_uris)
                 DATAPROFILE_MANAGER_SINGLETON = profilemgr
                 
         finally:
