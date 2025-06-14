@@ -1,3 +1,11 @@
+"""
+    .. module:: dataprofilemanager
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module providing the :class:`DataProfileManager` class for
+                    loading and accessing data source profiles.
+
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+"""
 
 __author__ = "Myron Walker"
 __copyright__ = "Copyright 2025, Automation Mojo LLC"

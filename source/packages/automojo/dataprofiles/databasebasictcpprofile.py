@@ -1,3 +1,11 @@
+"""
+    .. module:: databasebasictcpprofile
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that defines :class:`DatabaseBasicTcpProfile` for
+                    databases accessed via host and port over TCP.
+
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+"""
 
 __author__ = "Myron Walker"
 __copyright__ = "Copyright 2025, Automation Mojo LLC"

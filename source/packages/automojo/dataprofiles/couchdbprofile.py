@@ -1,3 +1,11 @@
+"""
+    .. module:: couchdbprofile
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that defines the :class:`CouchDbProfile` class used to
+                    describe CouchDB connection information.
+
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+"""
 
 __author__ = "Myron Walker"
 __copyright__ = "Copyright 2025, Automation Mojo LLC"

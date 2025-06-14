@@ -1,3 +1,11 @@
+"""
+    .. module:: snowflakeprofile
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that defines the :class:`SnowflakeProfile` class used
+                    to describe Snowflake database connection settings.
+
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+"""
 
 __author__ = "Myron Walker"
 __copyright__ = "Copyright 2025, Automation Mojo LLC"
