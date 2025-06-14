@@ -29,9 +29,13 @@ logger = logging.getLogger()
 
 class DataProfileManager:
     """
+        Manages a collection of data source profiles loaded from configuration.
     """
 
     def __init__(self):
+        """
+            Creates an empty :class:`DataProfileManager` instance.
+        """
 
         self._profiles = {}
         self._source_uris = []
@@ -40,11 +44,20 @@ class DataProfileManager:
     
     @property
     def profiles(self):
+        """
+            Dictionary of loaded profiles keyed by identifier.
+
+            :returns: Dictionary of profiles.
+        """
         return self._profiles
     
     def lookup_profile(self, profkey: str) -> Union[DatabaseBasicProfile, DatabaseBasicTcpProfile]:
         """
             Lookup a data source profile by key.
+
+            :param profkey: Identifier of the profile to look up.
+
+            :returns: Matching profile object.
         """
         
         if profkey not in self._profiles:
@@ -67,7 +80,13 @@ class DataProfileManager:
         return profile
     
     def load_datasource_profiles(self, configuration_info: dict, source_uris: Optional[List[str]] = None):
-        
+        """
+            Loads data source profiles from a configuration mapping.
+
+            :param configuration_info: Configuration dictionary containing profiles.
+            :param source_uris: Optional list of configuration source URIs.
+        """
+
         if source_uris != None:
             self._source_uris.extend(source_uris)
 
@@ -135,6 +154,13 @@ class DataProfileManager:
         return
     
     def _validate_datasource_profiles(self, profiles_list: List[Dict[str, str]]) -> Tuple[List[str], List[str]]:
+        """
+            Validates a list of data profile dictionaries.
+
+            :param profiles_list: Profile dictionaries to validate.
+
+            :returns: Lists of errors and warnings.
+        """
 
         errors = []
         warns = []

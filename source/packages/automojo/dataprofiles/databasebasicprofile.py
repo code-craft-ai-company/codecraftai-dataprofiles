@@ -18,8 +18,17 @@ from automojo.dataprofiles.basedataprofile import BaseDataProfile
 class DatabaseBasicProfile(BaseDataProfile):
 
     def __init__(self, identifier: str, *, category: str, dbtype: str, dbname: str = None, credential: str = None):
+        """
+            Initializes a :class:`DatabaseBasicProfile` instance.
+
+            :param identifier: Name used to reference the profile.
+            :param category: The profile category.
+            :param dbtype: The database engine type.
+            :param dbname: Optional database name.
+            :param credential: Credential identifier used for authentication.
+        """
         super().__init__(identifier, category=category, credential=credential)
-        
+
         self._dbtype = dbtype
         self._dbname = dbname
 
@@ -27,15 +36,32 @@ class DatabaseBasicProfile(BaseDataProfile):
     
     @property
     def dbname(self) -> str:
+        """
+            The database name associated with the profile.
+
+            :returns: Database name value.
+        """
         return self._dbname
     
     @property
     def dbtype(self) -> str:
+        """
+            The database engine type.
+
+            :returns: Database type string.
+        """
         return self._dbtype
 
     @classmethod
     def validate(cls, profile_info: Dict[str, str]):
-        
+        """
+            Validates a basic database profile configuration.
+
+            :param profile_info: Profile configuration to validate.
+
+            :returns: Lists of errors and warnings.
+        """
+
         errors = []
         warns = []
 

@@ -18,6 +18,13 @@ class BaseDataProfile:
         The :class:`BaseDataProfiles` object serves as a base class for data source profile objects.
     """
     def __init__(self, identifier: str, *, category: str, credential: Optional[str] = None):
+        """
+            Constructs a :class:`BaseDataProfile` instance.
+
+            :param identifier: The name used to reference this profile.
+            :param category: The profile category.
+            :param credential: Optional credential reference.
+        """
         self._identifier = identifier
         self._category = category
         self._credential = credential
@@ -25,20 +32,39 @@ class BaseDataProfile:
 
     @property
     def credential(self) -> Union[str, None]:
+        """
+            The credential identifier associated with this profile.
+
+            :returns: Credential identifier or ``None``.
+        """
         return self._credential
 
     @property
     def identifier(self) -> str:
+        """
+            The identifier for the profile.
+
+            :returns: Profile identifier.
+        """
         return self._identifier
 
     @property
     def category(self) -> str:
+        """
+            The category for the profile.
+
+            :returns: Profile category.
+        """
         return self._category
     
     @classmethod
     def validate(cls, profile_info: Dict[str, str]) -> Tuple[List[str], List[str]]:
         """
-            Validates that a data profile has the minimum required fields of a data profile.
+            Validates that a data profile has the minimum required fields.
+
+            :param profile_info: Data profile dictionary to validate.
+
+            :returns: Lists of errors and warnings.
         """
         errors = []
         warns = []
