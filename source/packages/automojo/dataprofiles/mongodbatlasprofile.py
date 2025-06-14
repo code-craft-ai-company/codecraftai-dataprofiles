@@ -21,26 +21,47 @@ class MongoDBAtlasProfile(BaseDataProfile):
     category = "mongodb-atlas"
 
     def __init__(self, identifier: str, *, category: str, connection: str, credential: str = None):
+        """
+            Initializes a :class:`MongoDBAtlasProfile` instance.
+
+            :param identifier: Name used to reference the profile.
+            :param category: The profile category.
+            :param connection: MongoDB Atlas connection template.
+            :param credential: Credential identifier used for authentication.
+        """
         super().__init__(identifier, category=category, credential=credential)
-        
+
         self._connection = connection
         return
     
     @property
     def connection(self) -> str:
+        """
+            Connection template string for MongoDB Atlas.
+
+            :returns: Connection template.
+        """
         return self._connection
 
     def connection_string(self, credobj: IBasicCredential) -> str:
+        """
+            Builds a connection string using credential information.
+
+            :param credobj: Credential object containing the username and password.
+
+            :returns: Expanded connection string.
+        """
         connstr = self._connection.replace("<username>", credobj.username).replace("<password>", credobj.password)
         return connstr
 
     @classmethod
     def validate(cls, profile_info: Dict[str, str]):
         """
-            dataprofiles:
-            -   identifier: mongodb-example
-                category: mongodb-atlas
-                connection: mongodb+srv://<username>:<password>@automation-mojo-db.q0jpg0g.mongodb.net/
+            Validates a MongoDB Atlas profile configuration.
+
+            :param profile_info: Profile configuration to validate.
+
+            :returns: Lists of errors and warnings.
         """
         
         errors = []

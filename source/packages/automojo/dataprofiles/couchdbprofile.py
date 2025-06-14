@@ -21,8 +21,19 @@ class CouchDbProfile(BaseDataProfile):
     category = "couchdb"
 
     def __init__(self, identifier: str, *, category: str, host: str, port: int, scheme: str = "http", dbname: str = None, credential: str = None):
+        """
+            Initializes a :class:`CouchDbProfile` instance.
+
+            :param identifier: Name used to reference the profile.
+            :param category: The profile category.
+            :param host: Host name for the CouchDB instance.
+            :param port: Port number for the CouchDB service.
+            :param scheme: Protocol scheme for the connection.
+            :param dbname: Optional database name.
+            :param credential: Credential identifier used for authentication.
+        """
         super().__init__(identifier, category=category, credential=credential)
-        
+
         self._host = host
         self._port = port
         self._scheme = scheme
@@ -32,29 +43,50 @@ class CouchDbProfile(BaseDataProfile):
     
     @property
     def dbname(self) -> str:
+        """
+            The name of the CouchDB database.
+
+            :returns: Database name.
+        """
         return self._dbname
     
     @property
     def host(self) -> str:
+        """
+            The host where CouchDB is running.
+
+            :returns: Host name.
+        """
         return self._host
     
     @property
     def port(self) -> int:
+        """
+            The TCP port for CouchDB.
+
+            :returns: Port value.
+        """
         return self._port
 
     def connection_string(self, credobj: IBasicCredential) -> str:
+        """
+            Builds a connection string for the CouchDB server.
+
+            :param credobj: Credential object containing the username and password.
+
+            :returns: Connection string for the server.
+        """
         connstr = f"{self._scheme}://{credobj.username}:{credobj.password}@{self._host}:{self._port}"
         return connstr
 
     @classmethod
     def validate(cls, profile_info: Dict[str, str]):
         """
-            -   identifier: couchdb-example
-                category: couchdb
-                dbname: testdb
-                host: somedb.somecompany.com
-                port: 8888
-                credential: dbadmin
+            Validates a CouchDB profile configuration.
+
+            :param profile_info: Profile configuration to validate.
+
+            :returns: Lists of errors and warnings.
         """
 
         errors = []
