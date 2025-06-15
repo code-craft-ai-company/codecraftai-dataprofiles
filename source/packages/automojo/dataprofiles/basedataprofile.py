@@ -15,7 +15,8 @@ from typing import Dict, List, Optional, Tuple, Union
 
 class BaseDataProfile:
     """
-        The :class:`BaseDataProfiles` object serves as a base class for data source profile objects.
+        The :class:`BaseDataProfile` object serves as a base class for data source
+        profile objects.
     """
     def __init__(self, identifier: str, *, category: str, credential: Optional[str] = None):
         """
