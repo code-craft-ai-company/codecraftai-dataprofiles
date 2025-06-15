@@ -16,6 +16,10 @@ from typing import Dict
 from automojo.dataprofiles.basedataprofile import BaseDataProfile
 
 class DatabaseBasicTcpProfile(BaseDataProfile):
+    """
+        The :class:`DatabaseBasicTcpProfile` class captures host and port
+        information for databases accessed over TCP.
+    """
 
     category = "basic-tcp"
 
