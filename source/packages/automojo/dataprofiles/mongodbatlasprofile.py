@@ -17,6 +17,10 @@ from automojo.dataprofiles.basedataprofile import BaseDataProfile
 from automojo.interfaces.ibasiccredential import IBasicCredential
 
 class MongoDBAtlasProfile(BaseDataProfile):
+    """
+        The :class:`MongoDBAtlasProfile` class stores connection information for
+        MongoDB Atlas deployments.
+    """
 
     category = "mongodb-atlas"
 

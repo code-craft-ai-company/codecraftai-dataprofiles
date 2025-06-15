@@ -16,6 +16,10 @@ from typing import Dict, Union
 from automojo.dataprofiles.basedataprofile import BaseDataProfile
 
 class SnowflakeProfile(BaseDataProfile):
+    """
+        The :class:`SnowflakeProfile` class describes connection settings for a
+        Snowflake database.
+    """
 
     category = "snowflake"
 

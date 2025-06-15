@@ -17,6 +17,10 @@ from automojo.dataprofiles.basedataprofile import BaseDataProfile
 from automojo.interfaces.ibasiccredential import IBasicCredential
 
 class CouchDbProfile(BaseDataProfile):
+    """
+        The :class:`CouchDbProfile` class provides metadata for connecting to
+        a CouchDB data source.
+    """
 
     category = "couchdb"
 

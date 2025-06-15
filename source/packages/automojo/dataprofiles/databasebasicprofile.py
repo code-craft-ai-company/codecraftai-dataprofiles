@@ -16,6 +16,10 @@ from typing import Dict
 from automojo.dataprofiles.basedataprofile import BaseDataProfile
 
 class DatabaseBasicProfile(BaseDataProfile):
+    """
+        The :class:`DatabaseBasicProfile` class describes database connection
+        information without host or port details.
+    """
 
     def __init__(self, identifier: str, *, category: str, dbtype: str, dbname: str = None, credential: str = None):
         """
