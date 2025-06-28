@@ -26,6 +26,7 @@ develop = false
 
 [package.dependencies]
 automojo-errors = {git = "https://github.com/automationmojo/automojo-errors.git", branch = "main"}
+automojo-presence = {git = "https://github.com/automationmojo/automojo-presence.git", branch = "main"}
 automojo-waiting = {git = "https://github.com/automationmojo/automojo-waiting.git", branch = "main"}
 cryptography = "^44.0.0"
 debugpy = "^1.8.12"
@@ -35,7 +36,7 @@ pyyaml = "^6.0.2"
 type = "git"
 url = "https://github.com/automationmojo/automojo-foundation.git"
 reference = "main"
-resolved_reference = "8b02fd501aabb8a815181924a22bc0d4ed38bd9c"
+resolved_reference = "12502903b14b0182e156025794d75886c4b39268"
 
 [[package]]
 name = "automojo-interfaces"
@@ -53,6 +54,21 @@ reference = "main"
 resolved_reference = "44c6d7d83fcfb0eb2e376622473123faa5fad0cc"
 
 [[package]]
+name = "automojo-presence"
+version = "0.0.1"
+description = "Automation Mojo - Presence Package"
+optional = false
+python-versions = ">=3.10,<4.0"
+files = []
+develop = false
+
+[package.source]
+type = "git"
+url = "https://github.com/automationmojo/automojo-presence.git"
+reference = "main"
+resolved_reference = "b2a5144741ce57d0d8d504d0d09fc243ebb3cbb0"
+
+[[package]]
 name = "automojo-testbase"
 version = "0.0.1"
 description = "Automation Mojo - TestBase"
@@ -62,6 +78,7 @@ files = []
 develop = false
 
 [package.dependencies]
+automojo-dataprofiles = {git = "https://github.com/automationmojo/automojo-dataprofiles.git", branch = "main"}
 automojo-errors = {git = "https://github.com/automationmojo/automojo-errors.git", branch = "main"}
 automojo-foundation = {git = "https://github.com/automationmojo/automojo-foundation.git", branch = "main"}
 automojo-interfaces = {git = "https://github.com/automationmojo/automojo-interfaces.git", branch = "main"}
@@ -72,7 +89,7 @@ click = "^8.1.8"
 type = "git"
 url = "https://github.com/automationmojo/automojo-testbase.git"
 reference = "main"
-resolved_reference = "b67f217d92e487f2a26e324d4b06f7dd7a7056c5"
+resolved_reference = "97c0d7b172be67a59e548c5668e58f757395b5b1"
 
 [[package]]
 name = "automojo-waiting"
