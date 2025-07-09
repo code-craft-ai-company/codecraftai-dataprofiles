@@ -20,6 +20,8 @@ class DatabaseBasicProfile(BaseDataProfile):
         The :class:`DatabaseBasicProfile` class describes database connection
         information without host or port details.
     """
+    
+    category = "basic"
 
     def __init__(self, identifier: str, *, category: str, dbtype: str, dbname: str = None, credential: str = None):
         """
