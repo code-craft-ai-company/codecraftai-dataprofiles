@@ -113,7 +113,10 @@ class DataProfileManager:
 
                         category = profile['category']
 
-                        if category == DatabaseBasicTcpProfile.category:
+                        if category == DatabaseBasicProfile.category:
+                            credobj = DatabaseBasicProfile(**profile)
+                            self._profiles[ident] = credobj
+                        elif category == DatabaseBasicTcpProfile.category:
                             credobj = DatabaseBasicTcpProfile(**profile)
                             self._profiles[ident] = credobj
                         elif category == CouchDbProfile.category:
