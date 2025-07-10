@@ -19,7 +19,7 @@ import os
 from automojo.errors.exceptions import ConfigurationError
 
 from automojo.dataprofiles.basedataprofile import BaseDataProfile
-from automojo.dataprofiles.databasebasicprofile import DatabaseBasicProfile
+from automojo.dataprofiles.databasebasicsocketprofile import DatabaseBasicSocketProfile
 from automojo.dataprofiles.databasebasictcpprofile import DatabaseBasicTcpProfile
 from automojo.dataprofiles.couchdbprofile import CouchDbProfile
 from automojo.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
@@ -113,8 +113,8 @@ class DataProfileManager:
 
                         category = profile['category']
 
-                        if category == DatabaseBasicProfile.category:
-                            credobj = DatabaseBasicProfile(**profile)
+                        if category == DatabaseBasicSocketProfile.category:
+                            credobj = DatabaseBasicSocketProfile(**profile)
                             self._profiles[ident] = credobj
                         elif category == DatabaseBasicTcpProfile.category:
                             credobj = DatabaseBasicTcpProfile(**profile)

@@ -15,15 +15,15 @@ from typing import Dict
 
 from automojo.dataprofiles.basedataprofile import BaseDataProfile
 
-class DatabaseBasicProfile(BaseDataProfile):
+class DatabaseBasicSocketProfile(BaseDataProfile):
     """
         The :class:`DatabaseBasicProfile` class describes database connection
         information without host or port details.
     """
     
-    category = "basic"
+    category = "basic-socket"
 
-    def __init__(self, identifier: str, *, category: str, dbtype: str, dbname: str = None, credential: str = None):
+    def __init__(self, identifier: str, *, category: str, dbtype: str, dbname: str = None, socket: str = None, credential: str = None):
         """
             Initializes a :class:`DatabaseBasicProfile` instance.
 
@@ -31,12 +31,14 @@ class DatabaseBasicProfile(BaseDataProfile):
             :param category: The profile category.
             :param dbtype: The database engine type.
             :param dbname: Optional database name.
+            param socket: Optional socket path for the database connection.
             :param credential: Credential identifier used for authentication.
         """
         super().__init__(identifier, category=category, credential=credential)
 
         self._dbtype = dbtype
         self._dbname = dbname
+        self._socket = socket
 
         return
     
@@ -57,6 +59,15 @@ class DatabaseBasicProfile(BaseDataProfile):
             :returns: Database type string.
         """
         return self._dbtype
+    
+    @property
+    def socket(self) -> str:
+        """
+            The socket path for the database connection.
+
+            :returns: Socket path string.
+        """
+        return self._socket
 
     @classmethod
     def validate(cls, profile_info: Dict[str, str]):
@@ -81,6 +92,10 @@ class DatabaseBasicProfile(BaseDataProfile):
         
         if "dbtype" not in profile_info:
             errmsg = f"The 'basic-profile' profile must have an 'dbtype' field."
+            errors.append(errmsg)
+        
+        if "socket" not in profile_info:
+            errmsg = f"The 'basic-profile' profile must have an 'socket' field."
             errors.append(errmsg)
 
         return errors, warns
