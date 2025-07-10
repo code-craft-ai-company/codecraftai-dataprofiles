@@ -51,7 +51,7 @@ class DataProfileManager:
         """
         return self._profiles
     
-    def lookup_profile(self, profkey: str) -> Union[DatabaseBasicProfile, DatabaseBasicTcpProfile]:
+    def lookup_profile(self, profkey: str) -> Union[DatabaseBasicSocketProfile, DatabaseBasicTcpProfile, CouchDbProfile, MongoDBAtlasProfile, SnowflakeProfile]:
         """
             Lookup a data source profile by key.
 
@@ -179,7 +179,11 @@ class DataProfileManager:
 
                 category = profile['category']
                 
-                if category == DatabaseBasicTcpProfile.category:
+                if category == DatabaseBasicSocketProfile.category:
+                    prof_errors, prof_warns = DatabaseBasicSocketProfile.validate(profile)
+                    errors.extend(prof_errors)
+                    warns.extend(prof_warns)
+                elif category == DatabaseBasicTcpProfile.category:
                     prof_errors, prof_warns = DatabaseBasicTcpProfile.validate(profile)
                     errors.extend(prof_errors)
                     warns.extend(prof_warns)
