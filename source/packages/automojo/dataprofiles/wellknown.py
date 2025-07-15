@@ -14,13 +14,13 @@ __credits__ = []
 
 from threading import RLock
 
-from automojo.foundation.collections.wellknown import ContextSingleton
-from automojo.foundation.collections.contextpaths import ContextPaths
-from automojo.foundation.collections.mergemap import MergeMap
+from automojo.presence.wellknown import ContextSingleton
+from automojo.presence.contextpaths import ContextPaths
+from automojo.xmodules.xcollections.mergemap import MergeMap
 
 from automojo.dataprofiles.dataprofilemanager import DataProfileManager
 
-from automojo.foundation.configuration.configurationmaps import CONFIGURATION_MAPS
+from automojo.configuration.configurationmaps import CONFIGURATION_MAPS
 
 DATAPROFILE_MANAGER_SINGLETON = None
 
