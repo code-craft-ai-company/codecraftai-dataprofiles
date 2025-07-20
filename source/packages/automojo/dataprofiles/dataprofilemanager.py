@@ -41,7 +41,7 @@ class DataProfileManager:
         self._source_uris = []
 
         return
-    
+
     @property
     def profiles(self):
         """
@@ -50,7 +50,7 @@ class DataProfileManager:
             :returns: Dictionary of profiles.
         """
         return self._profiles
-    
+
     def lookup_profile(self, profkey: str) -> Union[DatabaseBasicSocketProfile, DatabaseBasicTcpProfile, CouchDbProfile, MongoDBAtlasProfile, SnowflakeProfile]:
         """
             Lookup a data source profile by key.
@@ -59,12 +59,12 @@ class DataProfileManager:
 
             :returns: Matching profile object.
         """
-        
+
         if profkey not in self._profiles:
             errmsg_lines = [
                 f"Error missing data source profile '{profkey}'."
             ]
-        
+
             if len(self._source_uris) > 0:
                 errmsg_lines.append("PROFILES URIS:")
 
@@ -78,7 +78,7 @@ class DataProfileManager:
         profile = self._profiles[profkey]
 
         return profile
-    
+
     def load_datasource_profiles(self, configuration_info: dict, source_uris: Optional[List[str]] = None):
         """
             Loads data source profiles from a configuration mapping.
@@ -87,7 +87,7 @@ class DataProfileManager:
             :param source_uris: Optional list of configuration source URIs.
         """
 
-        if source_uris != None:
+        if source_uris is not None:
             self._source_uris.extend(source_uris)
 
 
@@ -130,7 +130,7 @@ class DataProfileManager:
                             self._profiles[ident] = credobj
                         else:
                             warnmsg = f"Unknown category '{category}' found in database profile '{ident}'"
-                            logger.warn(warnmsg)
+                            logger.warning(warnmsg)
 
                 else:
                     errmsg_lines = [
@@ -155,7 +155,7 @@ class DataProfileManager:
                 errmsg = f"No 'dataprofiles' field found."
                 raise ConfigurationError(errmsg)
         return
-    
+
     def _validate_datasource_profiles(self, profiles_list: List[Dict[str, str]]) -> Tuple[List[str], List[str]]:
         """
             Validates a list of data profile dictionaries.
@@ -178,7 +178,7 @@ class DataProfileManager:
             if len(base_errors) == 0:
 
                 category = profile['category']
-                
+
                 if category == DatabaseBasicSocketProfile.category:
                     prof_errors, prof_warns = DatabaseBasicSocketProfile.validate(profile)
                     errors.extend(prof_errors)
@@ -202,7 +202,6 @@ class DataProfileManager:
                 else:
                     ident = profile["identifier"]
                     warnmsg = f"Unknown category '{category}' found in database profile '{ident}'"
-                    logger.warn(warnmsg)
+                    logger.warning(warnmsg)
 
-                
         return errors, warns
