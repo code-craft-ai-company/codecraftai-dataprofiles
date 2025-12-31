@@ -12,11 +12,11 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
+from collections import MutableMapping
 from threading import RLock
 
-from automojo.presence.wellknown import ContextSingleton
-from automojo.presence.contextpaths import ContextPaths
-from automojo.xmodules.xcollections.mergemap import MergeMap
+from automojo.thisapp.wellknown import ThisApplicationSingleton
+from automojo.thisapp.contextpaths import ContextPaths
 
 from automojo.dataprofiles.dataprofilemanager import DataProfileManager
 
@@ -39,22 +39,22 @@ def DataProfileManagerSingleton() -> DataProfileManager:
         try:
 
             if DATAPROFILE_MANAGER_SINGLETON is None:
-                ctx = ContextSingleton()
+                this_app = ThisApplicationSingleton()
 
                 dataprofiles_config = None
                 config_uris = None
 
                 if CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP is not None and \
                    len(CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP) > 0:
-                    configmap: MergeMap = CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP
+                    configmap: MutableMapping = CONFIGURATION_MAPS.DATAPROFILE_CONFIGURATION_MAP
                     if "dataprofiles" in configmap:
                         dataprofiles_config = configmap
 
-                    config_uris = ctx.lookup(ContextPaths.CONFIG_DATAPROFILE_URIS, [])
+                    config_uris = this_app.context.lookup(ContextPaths.CONFIG_DATAPROFILE_URIS, [])
 
                 elif CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP is not None and \
                     len(CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP) > 0:
-                    configmap: MergeMap = CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP
+                    configmap: MutableMapping = CONFIGURATION_MAPS.LANDSCAPE_CONFIGURATION_MAP
                     if "dataprofiles" in configmap:
                         dataprofiles_config = configmap
 
