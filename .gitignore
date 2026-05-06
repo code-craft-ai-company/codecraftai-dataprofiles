@@ -136,3 +136,6 @@ dmypy.json
 
 # macOS
 .DS_Store
+
+# Claude Code worktree metadata
+.claude/
