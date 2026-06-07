@@ -8,18 +8,18 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2025, Automation Mojo LLC"
+__copyright__ = "Copyright 2025, Code Craft AI LLC"
 __credits__ = []
 
 from typing import List, Optional
 
 from threading import RLock
 
-from automojo.errors.exceptions import SemanticError
+from ccai.errors.exceptions import SemanticError
 
-from automojo.dataprofiles.dataprofilemanager import DataProfileManager
+from ccai.dataprofiles.dataprofilemanager import DataProfileManager
 
-from automojo.configuration.configurationmaps import CONFIGURATION_MAPS
+from ccai.configuration.configurationmaps import CONFIGURATION_MAPS
 
 DATAPROFILE_MANAGER_SINGLETON = None
 

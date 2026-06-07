@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `automojo-dataprofiles` package provides a structured framework for managing data source connectivity profiles used by Automation Mojo utilities. This package enables standardized configuration and access to various database and data storage systems through a unified profile management system.
+The `codecraftai-dataprofiles` package provides a structured framework for managing data source connectivity profiles used by Code Craft AI utilities. This package enables standardized configuration and access to various database and data storage systems through a unified profile management system.
 
 ## Architecture
 
@@ -118,12 +118,12 @@ Base validation is performed in `BaseDataProfile.validate()`, with specialized v
 
 ### External Dependencies
 The package references several AutoMojo framework components:
-- `automojo.errors.exceptions.ConfigurationError`
-- `automojo.interfaces.ibasiccredential.IBasicCredential`
-- `automojo.presence.wellknown.ContextSingleton`
-- `automojo.presence.contextpaths.ContextPaths`
-- `automojo.xmodules.xcollections.mergemap.MergeMap`
-- `automojo.configuration.configurationmaps.CONFIGURATION_MAPS`
+- `ccai.errors.exceptions.ConfigurationError`
+- `ccai.interfaces.ibasiccredential.IBasicCredential`
+- `ccai.presence.wellknown.ContextSingleton`
+- `ccai.presence.contextpaths.ContextPaths`
+- `ccai.xmodules.xcollections.mergemap.MergeMap`
+- `ccai.configuration.configurationmaps.CONFIGURATION_MAPS`
 
 ### Internal Dependencies
 - Standard Python libraries: `typing`, `logging`, `os`, `threading`
@@ -206,7 +206,7 @@ conn_str = atlas_profile.connection_string(credential_obj)
 ### Test Organization
 Following the repository conventions:
 - Test files mirror source hierarchy
-- Tests located in `source/testroots/automojo/tests/singlehost/dataprofiles/`
+- Tests located in `source/testroots/ccai/tests/singlehost/dataprofiles/`
 - Use `testbase` framework for test execution
 
 ## Future Enhancements

@@ -8,12 +8,12 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2025, Automation Mojo LLC"
+__copyright__ = "Copyright 2025, Code Craft AI LLC"
 __credits__ = []
 
 from typing import Dict
 
-from automojo.dataprofiles.basedataprofile import BaseDataProfile
+from ccai.dataprofiles.basedataprofile import BaseDataProfile
 
 class DatabaseBasicTcpProfile(BaseDataProfile):
     """

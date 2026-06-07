@@ -26,7 +26,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ Add comprehensive Sphinx-style documentation
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/basedataprofile.py`
+- `source/packages/ccai/dataprofiles/basedataprofile.py`
 
 #### TASK-002: Create Profile Type Implementations ✅
 **Requirements**: REQ-006, REQ-007, REQ-008, REQ-009, REQ-010
@@ -40,11 +40,11 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ `SnowflakeProfile` for Snowflake data warehouse
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/databasebasicsocketprofile.py`
-- `source/packages/automojo/dataprofiles/databasebasictcpprofile.py`
-- `source/packages/automojo/dataprofiles/couchdbprofile.py`
-- `source/packages/automojo/dataprofiles/mongodbatlasprofile.py`
-- `source/packages/automojo/dataprofiles/snowflakeprofile.py`
+- `source/packages/ccai/dataprofiles/databasebasicsocketprofile.py`
+- `source/packages/ccai/dataprofiles/databasebasictcpprofile.py`
+- `source/packages/ccai/dataprofiles/couchdbprofile.py`
+- `source/packages/ccai/dataprofiles/mongodbatlasprofile.py`
+- `source/packages/ccai/dataprofiles/snowflakeprofile.py`
 
 ### 1.2 Profile Manager Implementation
 
@@ -59,7 +59,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ Support multiple configuration sources with URI tracking
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/dataprofilemanager.py`
+- `source/packages/ccai/dataprofiles/dataprofilemanager.py`
 
 #### TASK-004: Implement Singleton Pattern ✅
 **Requirements**: REQ-016, REQ-037, REQ-040, REQ-042, REQ-077
@@ -71,7 +71,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ Integrate with AutoMojo configuration framework
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/wellknown.py`
+- `source/packages/ccai/dataprofiles/wellknown.py`
 
 ## 2. Validation Framework Tasks
 
@@ -87,7 +87,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ Descriptive error messages with field names
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/basedataprofile.py`
+- `source/packages/ccai/dataprofiles/basedataprofile.py`
 
 #### TASK-006: Implement Profile-Specific Validation ✅
 **Requirements**: REQ-024, REQ-025, REQ-026, REQ-027, REQ-028
@@ -116,7 +116,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ Prevent instantiation with validation errors
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/dataprofilemanager.py`
+- `source/packages/ccai/dataprofiles/dataprofilemanager.py`
 
 ## 3. Connection String Generation Tasks
 
@@ -132,7 +132,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ Proper URL formatting
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/couchdbprofile.py`
+- `source/packages/ccai/dataprofiles/couchdbprofile.py`
 
 #### TASK-009: Implement MongoDB Atlas Connection Strings ✅
 **Requirements**: REQ-031, REQ-032
@@ -144,7 +144,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - ✅ Support for Atlas-specific connection formats
 
 **Files Modified**:
-- `source/packages/automojo/dataprofiles/mongodbatlasprofile.py`
+- `source/packages/ccai/dataprofiles/mongodbatlasprofile.py`
 
 ## 4. Testing Tasks
 
@@ -161,7 +161,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test error handling
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_basedataprofile.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_basedataprofile.py`
 
 #### TASK-011: Create Socket Profile Unit Tests ⏳
 **Requirements**: REQ-058, REQ-059, REQ-061, REQ-062
@@ -174,7 +174,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test error conditions
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_databasebasicsocketprofile.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_databasebasicsocketprofile.py`
 
 #### TASK-012: Create TCP Profile Unit Tests ⏳
 **Requirements**: REQ-058, REQ-059, REQ-061, REQ-062
@@ -187,7 +187,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test error conditions
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_databasebasictcpprofile.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_databasebasictcpprofile.py`
 
 #### TASK-013: Create CouchDB Profile Unit Tests ⏳
 **Requirements**: REQ-058, REQ-059, REQ-061, REQ-062
@@ -200,7 +200,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test credential interpolation
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_couchdbprofile.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_couchdbprofile.py`
 
 #### TASK-014: Create MongoDB Atlas Profile Unit Tests ⏳
 **Requirements**: REQ-058, REQ-059, REQ-061, REQ-062
@@ -213,7 +213,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test error conditions
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_mongodbatlasprofile.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_mongodbatlasprofile.py`
 
 #### TASK-015: Create Snowflake Profile Unit Tests ⏳
 **Requirements**: REQ-058, REQ-059, REQ-061, REQ-062
@@ -226,7 +226,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test property accessors
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_snowflakeprofile.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_snowflakeprofile.py`
 
 ### 4.2 Integration Testing Implementation
 
@@ -241,7 +241,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test configuration source tracking
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_dataprofilemanager.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_dataprofilemanager.py`
 
 #### TASK-017: Create Singleton Pattern Integration Tests ⏳
 **Requirements**: REQ-060, REQ-061, REQ-062
@@ -254,7 +254,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test configuration integration
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_wellknown.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_wellknown.py`
 
 ### 4.3 Performance and Reliability Testing
 
@@ -269,7 +269,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test concurrent access performance
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_performance.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_performance.py`
 
 #### TASK-019: Create Thread Safety Tests ⏳
 **Requirements**: REQ-042, REQ-043, REQ-044
@@ -282,7 +282,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test thread safety of profile manager operations
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_threadsafety.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_threadsafety.py`
 
 ## 5. Documentation and Quality Tasks
 
@@ -299,7 +299,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Add type hints where missing
 
 **Files to Review**:
-- All source files in `source/packages/automojo/dataprofiles/`
+- All source files in `source/packages/ccai/dataprofiles/`
 
 #### TASK-021: Create Usage Examples ⏳
 **Requirements**: REQ-055
@@ -312,7 +312,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Error handling examples
 
 **Files to Create**:
-- `source/packages/automojo/dataprofiles/examples.py`
+- `source/packages/ccai/dataprofiles/examples.py`
 
 ### 5.2 Code Quality and Standards
 
@@ -327,7 +327,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Code style consistency check
 
 **Files to Review**:
-- All source files in `source/packages/automojo/dataprofiles/`
+- All source files in `source/packages/ccai/dataprofiles/`
 
 #### TASK-023: Security Review ⏳
 **Requirements**: REQ-048, REQ-049, REQ-050, REQ-051, REQ-052
@@ -357,8 +357,8 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test context and presence management support
 
 **Files to Review**:
-- `source/packages/automojo/dataprofiles/wellknown.py`
-- `source/packages/automojo/dataprofiles/dataprofilemanager.py`
+- `source/packages/ccai/dataprofiles/wellknown.py`
+- `source/packages/ccai/dataprofiles/dataprofilemanager.py`
 
 #### TASK-025: Dependency Documentation ⏳
 **Requirements**: REQ-067, REQ-068, REQ-069
@@ -371,7 +371,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Create dependency compatibility matrix
 
 **Files to Create/Update**:
-- `source/packages/automojo/dataprofiles/README.md`
+- `source/packages/ccai/dataprofiles/README.md`
 - Package-level documentation
 
 ## 7. Extensibility and Future-Proofing Tasks
@@ -389,8 +389,8 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Create example custom profile implementation
 
 **Files to Create**:
-- `source/packages/automojo/dataprofiles/EXTENDING.md`
-- `source/packages/automojo/dataprofiles/templates/custom_profile_template.py`
+- `source/packages/ccai/dataprofiles/EXTENDING.md`
+- `source/packages/ccai/dataprofiles/templates/custom_profile_template.py`
 
 #### TASK-027: Test Extensibility Framework ⏳
 **Requirements**: REQ-033, REQ-034, REQ-035, REQ-036
@@ -403,8 +403,8 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test validation framework extension
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_extensibility.py`
-- `source/testroots/automojo/tests/singlehost/dataprofiles/fixtures/custom_test_profile.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_extensibility.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/fixtures/custom_test_profile.py`
 
 ## 8. Acceptance Testing Tasks
 
@@ -421,7 +421,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test validation error handling
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_acceptance_basic.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_acceptance_basic.py`
 
 #### TASK-029: Advanced Features Acceptance Tests ⏳
 **Requirements**: AC-005, AC-006, AC-007, AC-008
@@ -434,7 +434,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test comprehensive validation
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_acceptance_advanced.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_acceptance_advanced.py`
 
 #### TASK-030: Integration Acceptance Tests ⏳
 **Requirements**: AC-009, AC-010, AC-011, AC-012
@@ -447,7 +447,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 - Test repository testing conventions
 
 **Files to Create**:
-- `source/testroots/automojo/tests/singlehost/dataprofiles/test_acceptance_integration.py`
+- `source/testroots/ccai/tests/singlehost/dataprofiles/test_acceptance_integration.py`
 
 ## 9. Deployment and Maintenance Tasks
 
@@ -465,7 +465,7 @@ This document outlines the implementation and testing tasks required to fulfill 
 
 **Files to Update**:
 - `pyproject.toml`
-- `source/packages/automojo/dataprofiles/__init__.py`
+- `source/packages/ccai/dataprofiles/__init__.py`
 
 #### TASK-032: Create Test Execution Scripts ⏳
 **Requirements**: REQ-062
