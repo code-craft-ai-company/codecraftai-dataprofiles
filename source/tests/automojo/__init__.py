@@ -1,4 +1,4 @@
-"""Namespace package hook for Automation Mojo tests."""
+"""Namespace package hook for Code Craft AI tests."""
 
 from pkgutil import extend_path
 

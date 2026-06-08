@@ -1,1 +1,1 @@
-"""Automation Mojo test modules."""
+"""Code Craft AI test modules."""

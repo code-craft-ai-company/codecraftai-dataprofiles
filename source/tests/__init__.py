@@ -1,1 +1,1 @@
-"""Test suite package for Automation Mojo data profiles."""
+"""Test suite package for Code Craft AI data profiles."""

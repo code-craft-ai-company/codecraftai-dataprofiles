@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import unittest
 
-from automojo.dataprofiles.couchdbprofile import CouchDbProfile
-from automojo.dataprofiles.databasebasicsocketprofile import DatabaseBasicSocketProfile
-from automojo.dataprofiles.databasebasictcpprofile import DatabaseBasicTcpProfile
-from automojo.dataprofiles.dataprofilemanager import DataProfileManager
-from automojo.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
-from automojo.dataprofiles.snowflakeprofile import SnowflakeProfile
+from ccai.dataprofiles.couchdbprofile import CouchDbProfile
+from ccai.dataprofiles.databasebasicsocketprofile import DatabaseBasicSocketProfile
+from ccai.dataprofiles.databasebasictcpprofile import DatabaseBasicTcpProfile
+from ccai.dataprofiles.dataprofilemanager import DataProfileManager
+from ccai.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
+from ccai.dataprofiles.snowflakeprofile import SnowflakeProfile
 
 
 LANDSCAPE_DATA = {

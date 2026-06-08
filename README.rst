@@ -1,8 +1,8 @@
 =============================
-Automation Mojo Data Profiles
+Code Craft AI Data Profiles
 =============================
 
-The ``automojo-dataprofiles`` package provides a catalogue of connection-profile classes for the data stores that automojo-based applications and tests talk to. Its job is to let callers declare a named profile once (in configuration) and then look it up at runtime, rather than scattering hostnames, ports, and credentials through the codebase. The package complements ``automojo-credentials`` and is consumed by ``automojo-configuration`` and other packages that open data-store connections.
+The ``codecraftai-dataprofiles`` package provides a catalogue of connection-profile classes for the data stores that codecraftai-based applications and tests talk to. Its job is to let callers declare a named profile once (in configuration) and then look it up at runtime, rather than scattering hostnames, ports, and credentials through the codebase. The package complements ``codecraftai-credentials`` and is consumed by ``codecraftai-configuration`` and other packages that open data-store connections.
 
 Highlights
 ==========

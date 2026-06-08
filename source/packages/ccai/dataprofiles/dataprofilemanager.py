@@ -8,7 +8,7 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2025, Automation Mojo LLC"
+__copyright__ = "Copyright 2025, Code Craft AI LLC"
 __credits__ = []
 
 from typing import Dict, List, Optional, Tuple, Union
@@ -16,14 +16,14 @@ from typing import Dict, List, Optional, Tuple, Union
 import logging
 import os
 
-from automojo.errors.exceptions import ConfigurationError
+from ccai.errors.exceptions import ConfigurationError
 
-from automojo.dataprofiles.basedataprofile import BaseDataProfile
-from automojo.dataprofiles.databasebasicsocketprofile import DatabaseBasicSocketProfile
-from automojo.dataprofiles.databasebasictcpprofile import DatabaseBasicTcpProfile
-from automojo.dataprofiles.couchdbprofile import CouchDbProfile
-from automojo.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
-from automojo.dataprofiles.snowflakeprofile import SnowflakeProfile
+from ccai.dataprofiles.basedataprofile import BaseDataProfile
+from ccai.dataprofiles.databasebasicsocketprofile import DatabaseBasicSocketProfile
+from ccai.dataprofiles.databasebasictcpprofile import DatabaseBasicTcpProfile
+from ccai.dataprofiles.couchdbprofile import CouchDbProfile
+from ccai.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
+from ccai.dataprofiles.snowflakeprofile import SnowflakeProfile
 
 logger = logging.getLogger()
 
