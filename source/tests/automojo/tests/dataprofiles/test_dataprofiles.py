@@ -96,5 +96,74 @@ class DataProfileManagerTests(unittest.TestCase):
         self.assertIsInstance(profile, SnowflakeProfile)
 
 
+class WellKnownAndValidationTests(unittest.TestCase):
+    """Regression coverage for the wellknown singleton (clean-import blocker) and validation paths."""
+
+    def setUp(self) -> None:
+        from ccai.dataprofiles import wellknown
+        self._wellknown = wellknown
+        # Ensure a clean singleton so each test sees deterministic behavior.
+        wellknown.DATAPROFILE_MANAGER_SINGLETON = None
+
+    def tearDown(self) -> None:
+        self._wellknown.DATAPROFILE_MANAGER_SINGLETON = None
+
+    def test_wellknown_singleton_requires_args_on_first_call(self) -> None:
+        from ccai.errors.exceptions import SemanticError
+        with self.assertRaises(SemanticError):
+            self._wellknown.DataProfileManagerSingleton()
+
+    def test_wellknown_singleton_builds_with_args(self) -> None:
+        manager = self._wellknown.DataProfileManagerSingleton(dataprofile_info=LANDSCAPE_DATA, dataprofile_uris=[])
+        self.assertIsInstance(manager, DataProfileManager)
+        self.assertIn("snowflake-example", manager.profiles)
+
+    def test_lookup_missing_profile_raises_configuration_error(self) -> None:
+        from ccai.errors.exceptions import ConfigurationError
+        manager = DataProfileManager()
+        manager.load_datasource_profiles(LANDSCAPE_DATA)
+        with self.assertRaises(ConfigurationError):
+            manager.lookup_profile("does-not-exist")
+
+    def test_unknown_profile_field_raises_configuration_error(self) -> None:
+        from ccai.errors.exceptions import ConfigurationError
+        bad_data = {
+            "dataprofiles": [
+                {
+                    "identifier": "bad-tcp",
+                    "category": "basic-tcp",
+                    "dbtype": "postgres",
+                    "dbname": "testdb",
+                    "host": "somedb.somecompany.com",
+                    "port": 8888,
+                    "credential": "dbadmin",
+                    "bogus": "unexpected",
+                }
+            ]
+        }
+        manager = DataProfileManager()
+        with self.assertRaises(ConfigurationError):
+            manager.load_datasource_profiles(bad_data)
+
+    def test_snowflake_without_schema_is_accepted(self) -> None:
+        data = {
+            "dataprofiles": [
+                {
+                    "identifier": "sf-no-schema",
+                    "category": "snowflake",
+                    "account": "some-account",
+                    "warehouse": "some-warehouse",
+                    "database": "some-database",
+                    "credential": "dbadmin",
+                }
+            ]
+        }
+        manager = DataProfileManager()
+        manager.load_datasource_profiles(data)
+        profile = manager.lookup_profile("sf-no-schema")
+        self.assertIsInstance(profile, SnowflakeProfile)
+        self.assertIsNone(profile.schema)
+
+
 if __name__ == "__main__":
     unittest.main()

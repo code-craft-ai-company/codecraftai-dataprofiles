@@ -19,8 +19,6 @@ from ccai.errors.exceptions import SemanticError
 
 from ccai.dataprofiles.dataprofilemanager import DataProfileManager
 
-from ccai.configuration.configurationmaps import CONFIGURATION_MAPS
-
 DATAPROFILE_MANAGER_SINGLETON = None
 
 SINGLETON_LOCK = RLock()
@@ -36,7 +34,7 @@ def DataProfileManagerSingleton(dataprofile_info: Optional[dict] = None, datapro
     if DATAPROFILE_MANAGER_SINGLETON is None:
 
         if dataprofile_info is None or dataprofile_uris is None:
-             errmsg = "The first call to create the CredentialManagerSingleton must include the credential_info and credential_uris parameters."
+             errmsg = "The first call to create the DataProfileManagerSingleton must include the dataprofile_info and dataprofile_uris parameters."
              raise SemanticError(errmsg)
         
         SINGLETON_LOCK.acquire()

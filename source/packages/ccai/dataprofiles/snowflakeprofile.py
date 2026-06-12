@@ -113,15 +113,14 @@ class SnowflakeProfile(BaseDataProfile):
             errors.append(errmsg)
         
         if "database" not in profile_info:
-            errmsg = f"The 'snowflake' profile must have an 'database' field."
+            errmsg = f"The 'snowflake' profile must have a 'database' field."
             errors.append(errmsg)
-        
-        if "schema" not in profile_info:
-            errmsg = f"The 'snowflake' profile must have an 'schema' field."
-            errors.append(errmsg)
-        
+
+        # 'schema' is optional (the constructor defaults it to None), so it is not
+        # required here -- requiring it rejected configs the data class fully supports.
+
         if "credential" not in profile_info:
-            errmsg = f"The 'snowflake' profile must have an 'credential' field."
+            errmsg = f"The 'snowflake' profile must have a 'credential' field."
             errors.append(errmsg)
         
 

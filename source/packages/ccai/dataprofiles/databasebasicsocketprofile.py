@@ -83,19 +83,15 @@ class DatabaseBasicSocketProfile(BaseDataProfile):
         warns = []
 
         if "credential" not in profile_info:
-            errmsg = f"The 'basic-profile' profile must have an 'credential' field."
+            errmsg = f"The 'basic-socket' profile must have a 'credential' field."
             errors.append(errmsg)
-        
-        if "dbname" not in profile_info:
-            errmsg = f"The 'basic-profile' profile must have an 'dbname' field."
-            errors.append(errmsg)
-        
+
         if "dbtype" not in profile_info:
-            errmsg = f"The 'basic-profile' profile must have an 'dbtype' field."
+            errmsg = f"The 'basic-socket' profile must have a 'dbtype' field."
             errors.append(errmsg)
-        
-        if "socket" not in profile_info:
-            errmsg = f"The 'basic-profile' profile must have an 'socket' field."
-            errors.append(errmsg)
+
+        # 'dbname' and 'socket' are optional (the constructor defaults them to None),
+        # so they are not required here -- requiring them rejected configs the data
+        # class fully supports.
 
         return errors, warns

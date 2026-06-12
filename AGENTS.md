@@ -34,7 +34,7 @@ credentials through the codebase.
 The package is organised around a `BaseDataProfile` root with specialised
 subclasses for common transports and backends: `DatabaseBasicSocketProfile`
 and `DatabaseBasicTcpProfile` for generic socket/TCP database connections,
-and concrete profiles for `CouchDBProfile`, `MongoDBAtlasProfile`, and
+and concrete profiles for `CouchDbProfile`, `MongoDBAtlasProfile`, and
 `SnowflakeProfile`. A `DataProfileManager` and the `wellknown.py` singleton
 handle lookup by name. The package complements `codecraftai-credentials`
 (which provides the authentication portion of a connection) and is consumed

@@ -25,7 +25,7 @@ from ccai.dataprofiles.couchdbprofile import CouchDbProfile
 from ccai.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
 from ccai.dataprofiles.snowflakeprofile import SnowflakeProfile
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 class DataProfileManager:
     """
@@ -92,27 +92,35 @@ class DataProfileManager:
 
 
         if configuration_info is not None and len(configuration_info) > 0:
-            try:
-                profiles_list = configuration_info["dataprofiles"]
-                errors, warnings = self._validate_datasource_profiles(profiles_list)
 
-                if len(errors) == 0:
-                    for profile in profiles_list:
-                        # Copy the credential so if we modify it, we dont modify the
-                        # original declaration.
-                        profile = profile.copy()
+            # Explicit membership check instead of a broad try/except KeyError around the
+            # whole body -- the prior version re-reported any nested KeyError as a missing
+            # 'dataprofiles' field.
+            if "dataprofiles" not in configuration_info:
+                errmsg = "No 'dataprofiles' field found."
+                raise ConfigurationError(errmsg)
 
-                        if "identifier" not in profile:
-                            errmsg = "Datasource profile items in 'datasources' must have an 'identifier' member."
-                            raise ConfigurationError(errmsg)
-                        ident = profile["identifier"]
+            profiles_list = configuration_info["dataprofiles"]
+            errors, warnings = self._validate_datasource_profiles(profiles_list)
 
-                        if "category" not in profile:
-                            errmsg = "Credential items in 'environment/credentials' must have an 'category'."
-                            raise ConfigurationError(errmsg)
+            if len(errors) == 0:
+                for profile in profiles_list:
+                    # Copy the profile so if we modify it, we dont modify the
+                    # original declaration.
+                    profile = profile.copy()
 
-                        category = profile['category']
+                    if "identifier" not in profile:
+                        errmsg = "Datasource profile items in 'dataprofiles' must have an 'identifier' member."
+                        raise ConfigurationError(errmsg)
+                    ident = profile["identifier"]
 
+                    if "category" not in profile:
+                        errmsg = "Datasource profile items in 'dataprofiles' must have a 'category' member."
+                        raise ConfigurationError(errmsg)
+
+                    category = profile['category']
+
+                    try:
                         if category == DatabaseBasicSocketProfile.category:
                             credobj = DatabaseBasicSocketProfile(**profile)
                             self._profiles[ident] = credobj
@@ -131,29 +139,31 @@ class DataProfileManager:
                         else:
                             warnmsg = f"Unknown category '{category}' found in database profile '{ident}'"
                             logger.warning(warnmsg)
+                    except TypeError as terr:
+                        # An unexpected/unknown profile field surfaces here as a ctor
+                        # TypeError; reclassify to a clear ConfigurationError naming the profile.
+                        errmsg = f"Invalid or unexpected field in data source profile '{ident}': {terr}"
+                        raise ConfigurationError(errmsg) from terr
 
-                else:
-                    errmsg_lines = [
-                        f"Errors found in credentials.",
-                        "ERRORS:"
-                    ]
-                    for err in errors:
-                        errmsg_lines.append(f"    {err}")
+            else:
+                errmsg_lines = [
+                    "Errors found in data source profiles.",
+                    "ERRORS:"
+                ]
+                for err in errors:
+                    errmsg_lines.append(f"    {err}")
 
-                    errmsg_lines.append("WARNINGS:")
-                    for warn in warnings:
-                        errmsg_lines.append(f"    {warn}")
+                errmsg_lines.append("WARNINGS:")
+                for warn in warnings:
+                    errmsg_lines.append(f"    {warn}")
 
-                    errmsg_lines.append("SOURCE_URIS:")
-                    for suri in self._source_uris:
-                        errmsg_lines.append(f"    {suri}")
+                errmsg_lines.append("SOURCE_URIS:")
+                for suri in self._source_uris:
+                    errmsg_lines.append(f"    {suri}")
 
-                    errmsg = os.linesep.join(errmsg_lines)
-                    raise ConfigurationError(errmsg)
-
-            except KeyError as kerr:
-                errmsg = f"No 'dataprofiles' field found."
+                errmsg = os.linesep.join(errmsg_lines)
                 raise ConfigurationError(errmsg)
+
         return
 
     def _validate_datasource_profiles(self, profiles_list: List[Dict[str, str]]) -> Tuple[List[str], List[str]]:

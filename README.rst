@@ -9,7 +9,7 @@ Highlights
 
 - ``BaseDataProfile`` root with specialised subclasses for common transports and backends.
 - Generic transport profiles: ``DatabaseBasicSocketProfile`` and ``DatabaseBasicTcpProfile``.
-- Concrete profiles for ``CouchDBProfile``, ``MongoDBAtlasProfile``, and ``SnowflakeProfile``.
+- Concrete profiles for ``CouchDbProfile``, ``MongoDBAtlasProfile``, and ``SnowflakeProfile``.
 - ``DataProfileManager`` and the ``wellknown.py`` singleton for lookup by name.
 
 Repository Structure

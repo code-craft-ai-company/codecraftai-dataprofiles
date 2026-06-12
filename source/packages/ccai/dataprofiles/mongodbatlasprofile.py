@@ -72,11 +72,11 @@ class MongoDBAtlasProfile(BaseDataProfile):
         warns = []
 
         if "credential" not in profile_info:
-            errmsg = f"The 'mongodb-atlas' profile must have an 'credential' field."
+            errmsg = f"The 'mongodb-atlas' profile must have a 'credential' field."
             errors.append(errmsg)
-        
+
         if "connection" not in profile_info:
-            errmsg = f"The 'mongodb-atlas' profile must have an 'credential' field."
+            errmsg = f"The 'mongodb-atlas' profile must have a 'connection' field."
             errors.append(errmsg)
 
         return errors, warns
